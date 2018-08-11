@@ -124,7 +124,6 @@ HERE
             $this->renderNode($node, $table, [], $filter);
 
             if ($table->getNumberOfRows() > 0) {
-                $this->nbNodes++;
                 $output->writeln(sprintf('<pathbold>%s</pathbold> [%s] > %s',
                     $node->getPath(),
                     $node->getPrimaryNodeType()->getName(),
@@ -203,9 +202,10 @@ HERE
                     $newSpacers[] = '| ';
                 }
 
-                $this->nbNodes++;
                 $this->renderNode($child, $table, $newSpacers);
             }
+
+            $this->nbNodes++;        
         }
 
         if ($this->showTemplate) {
